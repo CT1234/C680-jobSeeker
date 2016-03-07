@@ -54,6 +54,7 @@ $ docker-compose up
 
 * Local development with just Docker:
 ```bash
+$ docker run -p 27017:27017 -d --name db mongo
 $ docker build -t sails .
-$ docker run -p 1337:1337 sails
+$ docker run -p 1337:1337 --link db:db sails
 ```
