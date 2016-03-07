@@ -8,6 +8,8 @@ web:
     NODE_ENV: development
   volumes:
     - .:/home/sails
+    - /home/sails/node_modules
+
 db:
   image: mongo
   ports:
