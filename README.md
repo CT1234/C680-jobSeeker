@@ -3,6 +3,11 @@ Make sure you have installed all of the following prerequisites on your developm
 * Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
 * Ruby - [Download & Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* Sails.JS - [Sails.JS](http://sailsjs.org/) is the foundation of our application.
+
+```bash
+$ sudo npm -g install sails
+```
 
 * Sass - You're going to use [Sass](http://sass-lang.com/) to compile CSS during your grunt task. Make sure you have ruby installed, and then install Sass using gem install:
 
@@ -27,6 +32,14 @@ To install Node.js dependencies you're going to use npm again. In the applicatio
 
 ```bash
 $ npm install
+```
+
+## Running The Application
+
+After the install process is over, run the application by using the sails command:
+
+```bash
+$ sails lift
 ```
 
 ## Docker
