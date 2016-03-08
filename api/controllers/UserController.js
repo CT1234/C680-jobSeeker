@@ -8,7 +8,19 @@ var passport = require('passport');
 
 module.exports = {
 	signUp: function(req, res) {
-    console.log(req.body);
+    User.create(req.body).exec(function createCB(err, user) {
+      if(err) {
+        console.log(err);
+      } else {
+        req.login(user, function(err) {
+          if(err) {
+            console.log(err);
+          } else {
+            res.redirect('/');
+          }
+        });
+      }
+    });
   },
 
   login: function(req, res) {
