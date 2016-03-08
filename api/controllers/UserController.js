@@ -7,14 +7,20 @@
 var passport = require('passport');
 
 module.exports = {
+  new: function(req, res) {
+    res.view('signup');
+  },
+
 	signUp: function(req, res) {
-    User.create(req.body).exec(function createCB(err, user) {
+    User.create(req.body).exec(function userCreated(err, user) {
       if(err) {
         console.log(err);
+        return res.redirect('/signup');
       } else {
         req.login(user, function(err) {
           if(err) {
             console.log(err);
+            return res.redirect('/signup');
           } else {
             res.redirect('/');
           }
