@@ -32,7 +32,7 @@ module.exports = {
   login: function(req, res) {
     passport.authenticate('local', function(err, user) {
       if(err || !user) {
-        console.log(err);
+        console.log(err); // will output null if !user instead
         res.redirect('/login');
       } else {
         req.login(user, function(err) {
