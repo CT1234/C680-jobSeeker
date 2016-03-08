@@ -34,8 +34,21 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
+  'get /login': {
+    view: 'login'
+  },
+
+  'post /login': 'UserController.login',
+
+  '/logout': 'UserController.logout',
+
+  'get /signup': {
+    view: 'signup'
+  },
+
+  'post /signup': 'UserController.signup'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
@@ -45,5 +58,4 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
 };
