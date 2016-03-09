@@ -7,42 +7,35 @@ body {
   background-size: cover;
 }
 
-// body {
-//   padding-top: 70px;
-//   // background-image: url(/images/background1.jpg);
-//   // background-size: cover;
-//   // background-repeat: no-repeat;
-// }
-
 #jobSeeker {
-    text-align: center;
-    font-family: Garamond, serif;
-    font-size: 3em;
+  text-align: center;
+  font-family: Garamond, serif;
+  font-size: 3em;
 }
 
 form {
-    text-align: center;
+  text-align: center;
 }
 
 #newUser{
-    text-align: center;
+  text-align: center;
 }
 
 #FBButton {
-    border-radius: 5px;
-    border: 2px solid #6495ED;
-    background-color: #BCD2EE;
-    height: 45px;
-    width: 120px;
-    margin: auto;
-    position:fixed;
-    bottom:10;
-    text-align: center;
+  border-radius: 5px;
+  border: 2px solid #6495ED;
+  background-color: #BCD2EE;
+  height: 45px;
+  width: 120px;
+  margin: auto;
+  position:fixed;
+  bottom:10;
+  text-align: center;
 }
 
 a {
-    text-decoration: none;
-    color: #3D59AB;
-    font-family: Verdana, sans-serif;
+  text-decoration: none;
+  color: #3D59AB;
+  font-family: Verdana, sans-serif;
 }
 
