@@ -37,14 +37,12 @@ module.exports.routes = {
   'get /login': {
     view: 'login'
   },
-
   'post /login': 'UserController.login',
-
   '/logout': 'UserController.logout',
-
   'get /signup': 'UserController.new',
+  'post /signup': 'UserController.signup',
 
-  'post /signup': 'UserController.signup'
+  'post /user/resume': 'ResumeController.create'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
