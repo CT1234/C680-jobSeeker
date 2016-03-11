@@ -33,6 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': 'HomeController.homepage',
+  'get /dashboard': 'HomeController.dashboard',
 
   'get /login': {
     view: 'login'

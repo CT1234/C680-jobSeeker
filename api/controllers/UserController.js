@@ -24,7 +24,7 @@ module.exports = {
             console.log(err);
             return res.redirect('/signup');
           } else {
-            res.redirect('/');
+            res.redirect('/dashboard');
           }
         });
       }
@@ -42,7 +42,7 @@ module.exports = {
             console.log(err);
             res.redirect('/login');
           } else {
-            res.redirect('/');
+            res.redirect('/dashboard');
           }
         })
       }

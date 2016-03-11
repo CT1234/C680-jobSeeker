@@ -19,8 +19,6 @@ module.exports = {
       return res.badRequest('No file was uploaded');
     }
     User.findOne({email: req.user.email}).exec(function(err, user) {
-      // Should probably move to another directory. 
-      // http://howtonode.org/really-simple-file-uploads
       Resume.create({
         name: uploadedFiles[0].filename,
         resumeFd: uploadedFiles[0].fd,

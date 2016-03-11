@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if (resumes.length > 0) { %>
+      CREATE TABLE
+    <% } else { %>
+      NO RESUMES
+    <% } %>
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <form action="/user/resume" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="resume">Resume</label>
+        <input type="file" name="resume" id="resume">
+      </div>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+</div>
