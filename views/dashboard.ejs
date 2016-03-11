@@ -20,4 +20,25 @@
       <button type="submit">Upload</button>
     </form>
   </div>
+  <div class="col-md-6 col-md-offset-3">
+    <% if (coverLetters.length > 0) { %>
+      <h2>Cover Letters</h2>
+      <ul>
+        <% coverLetters.forEach(function(coverLetter) { %>
+          <li><%= coverLetter.name %></li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      NO COVER LETTERS
+    <% } %>
+  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <form action="/user/coverletter" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="coverLetter">Cover Letter</label>
+        <input type="file" name="coverLetter" id="coverLetter">
+      </div>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
 </div>

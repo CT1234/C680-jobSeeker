@@ -13,10 +13,13 @@ module.exports = {
   dashboard: function(req, res) {
     User.findOne({email: req.user.email})
       .populate('resumes')
+      .populate('coverLetters')
       .exec(function(err, user) {
+        console.log(user);
         user.password = undefined;
         return res.view('dashboard', {
-          resumes: user.resumes
+          resumes: user.resumes,
+          coverLetters: user.coverLetters
         });
       })
   }

@@ -22,6 +22,10 @@ module.exports = {
       collection: 'resume',
       via: 'owner'
     },
+    coverLetters: {
+      collection: 'coverletter',
+      via: 'owner'
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
