@@ -34,6 +34,44 @@ module.exports = {
       });
     });
    });
+  },
+  show: function(req, res) {
+    req.validate({
+      id: 'string'
+    });
+
+    User.findOne({email: req.user.email})
+    .populate('coverLetters')
+    .exec(function(err, user) {
+      if(err) {
+        console.log(err);
+        return res.negotiate(err);
+      }
+
+      if(!user) {
+        console.log('show: user not found.');
+        return res.notFound();
+      }
+
+      if(user.coverLetters.length === 0) {
+        console.log('No cover letters.');
+        return res.notFound();
+      }
+
+      var SkipperDisk = require('skipper-disk'),
+          fileAdapter = SkipperDisk();
+
+      user.coverLetters.forEach(function(coverLetter) {
+        if(coverLetter.id === req.param('id')) {
+          fileAdapter.read(coverLetter.fileDescriptor)
+          .on('error', function(err) {
+            console.log(err);
+            return res.serverError(err);
+          })
+          .pipe(res);
+        }
+      });
+    });
   }
 };
 
