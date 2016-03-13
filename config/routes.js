@@ -44,7 +44,8 @@ module.exports.routes = {
   'post /signup': 'UserController.signup',
 
   'post /user/resume': 'ResumeController.create',
-  'post /user/coverletter': 'CoverLetterController.create'
+  'post /user/coverletter': 'CoverLetterController.create',
+  'get /user/resume/:id': 'ResumeController.show'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

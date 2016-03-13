@@ -4,7 +4,11 @@
       <h2>Resumes</h2>
       <ul>
         <% resumes.forEach(function(resume) { %>
-          <li><%= resume.name %></li>
+          <li>
+            <a href="user/resume/<%= resume.id %>">
+              <%= resume.name %>
+            </a>
+          </li>
         <% }) %>
       </ul>
     <% } else { %>
@@ -25,7 +29,11 @@
       <h2>Cover Letters</h2>
       <ul>
         <% coverLetters.forEach(function(coverLetter) { %>
-          <li><%= coverLetter.name %></li>
+          <li>
+            <a href="/user/coverletter/<%= coverLetter.id %>">
+              <%= coverLetter.name %>
+            </a>
+          </li>
         <% }) %>
       </ul>
     <% } else { %>
