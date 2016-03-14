@@ -1,44 +1,56 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="row well">
+  <div class="col-sm-6">
+    <h2>Resumes</h2>
+    <hr />
     <% if (resumes.length > 0) { %>
-      <h2>Resumes</h2>
-      <ul>
+      <ul class="list-group">
         <% resumes.forEach(function(resume) { %>
-          <li><%= resume.name %></li>
+          <li class="list-group-item">
+            <a href="/user/resume/<%= resume.id %>">
+              <%= resume.name %>
+            </a>
+            <a href="/user/resume/<%= resume.id %>" 
+               data-method="delete" class="pull-right">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </li>
         <% }) %>
       </ul>
     <% } else { %>
-      NO RESUMES
+      <p>No resumes uploaded.</p>
     <% } %>
-  </div>
-  <div class="col-md-6 col-md-offset-3">
     <form action="/user/resume" method="POST" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="resume">Resume</label>
-        <input type="file" name="resume" id="resume">
+        <input type="file" name="resume" id="resume"  class="filestyle" data-input="false" data-buttonText="Find resume">
       </div>
-      <button type="submit">Upload</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
     </form>
   </div>
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-sm-6">
+    <h2>Cover Letters</h2>
+    <hr />
     <% if (coverLetters.length > 0) { %>
-      <h2>Cover Letters</h2>
-      <ul>
+      <ul class="list-group">
         <% coverLetters.forEach(function(coverLetter) { %>
-          <li><%= coverLetter.name %></li>
+          <li class="list-group-item">
+            <a href="/user/coverletter/<%= coverLetter.id %>">
+              <%= coverLetter.name %>
+            </a>
+            <a href="/user/coverletter/<%= coverLetter.id %>" 
+               data-method="delete" class="pull-right">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </li>
         <% }) %>
       </ul>
     <% } else { %>
-      NO COVER LETTERS
+      <p>No cover letters uploaded.</p>
     <% } %>
-  </div>
-  <div class="col-md-6 col-md-offset-3">
     <form action="/user/coverletter" method="POST" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="coverLetter">Cover Letter</label>
-        <input type="file" name="coverLetter" id="coverLetter">
+        <input type="file" name="coverLetter" id="coverLetter" class="filestyle" data-input="false" data-buttonText="Find cover letter">
       </div>
-      <button type="submit">Upload</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
     </form>
   </div>
 </div>

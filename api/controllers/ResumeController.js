@@ -29,11 +29,59 @@ module.exports = {
           console.log(err);
           return res.negotiate(err);
         } else {
-          res.redirect('/');
+          res.redirect('/dashboard');
         }
       });
     });
    });
+  },
+  show: function(req, res) {
+    req.validate({
+      id: 'string'
+    });
+
+    User.findOne({email: req.user.email})
+    .populate('resumes')
+    .exec(function(err, user) {
+      if(err) {
+        console.log(err);
+        return res.negotiate(err);
+      }
+
+      if(!user) {
+        console.log('show: user not found.');
+        return res.notFound();
+      }
+
+      if(user.resumes.length === 0) {
+        console.log('No resumes');
+        return res.notFound();
+      }
+
+      var SkipperDisk = require('skipper-disk'),
+          fileAdapter = SkipperDisk();
+
+      user.resumes.forEach(function(resume) {
+        if(resume.id === req.param('id')) {
+          fileAdapter.read(resume.fileDescriptor)
+          .on('error', function(err) {
+            console.log(err);
+            return res.serverError(err);
+          })
+          .pipe(res);
+        }
+      });
+    });
+  },
+  destroy: function(req, res) {
+    Resume.destroy({id: req.param('id')}).exec(function(err) {
+      if(err) {
+        console.log(err);
+        return res.negotiate(err);
+      }
+
+      return res.ok();
+    });
   }
 };
 
