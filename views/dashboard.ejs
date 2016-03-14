@@ -10,7 +10,7 @@
             </a>
             <a href="/user/resume/<%= resume.id %>" 
                data-method="delete">
-                DELETE
+                <span class="glyphicon glyphicon-remove"></span>
             </a>
           </li>
         <% }) %>
@@ -20,10 +20,9 @@
     <% } %>
     <form action="/user/resume" method="POST" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="resume">Resume</label>
-        <input type="file" name="resume" id="resume">
+        <input type="file" name="resume" id="resume"  class="filestyle" data-input="false" data-buttonText="Find resume">
       </div>
-      <button type="submit">Upload</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
     </form>
   </div>
   <div class="col-sm-6">
@@ -37,7 +36,7 @@
             </a>
             <a href="/user/coverletter/<%= coverLetter.id %>" 
                data-method="delete">
-                DELETE
+                <span class="glyphicon glyphicon-remove"></span>
             </a>
           </li>
         <% }) %>
@@ -47,10 +46,9 @@
     <% } %>
     <form action="/user/coverletter" method="POST" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="coverLetter">Cover Letter</label>
-        <input type="file" name="coverLetter" id="coverLetter">
+        <input type="file" name="coverLetter" id="coverLetter" class="filestyle" data-input="false" data-buttonText="Find cover letter">
       </div>
-      <button type="submit">Upload</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
     </form>
   </div>
 </div>
