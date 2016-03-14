@@ -29,7 +29,7 @@ module.exports = {
           console.log(err);
           return res.negotiate(err);
         } else {
-          res.redirect('/');
+          res.redirect('/dashboard');
         }
       });
     });
@@ -71,6 +71,16 @@ module.exports = {
           .pipe(res);
         }
       });
+    });
+  },
+  destroy: function(req, res) {
+    CoverLetter.destroy({id: req.param('id')}).exec(function(err) {
+      if(err) {
+        console.log(err);
+        return res.negotiate(err);
+      }
+
+      return res.ok();
     });
   }
 };
