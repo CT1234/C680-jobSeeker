@@ -44,9 +44,12 @@ module.exports.routes = {
   'post /signup': 'UserController.signup',
 
   'post /user/resume': 'ResumeController.create',
+  'post /user/profilePic': 'ProfilePicController.create',
   'post /user/coverletter': 'CoverLetterController.create',
   'get /user/resume/:id': 'ResumeController.show',
   'get /user/coverletter/:id': 'CoverLetterController.show',
+  'get /user/profilePic/:id': 'ProfilePicController.show',
+  'delete /user/profilePic/:id': 'ProfilePicController.destroy',
   'delete /user/resume/:id': 'ResumeController.destroy',
   'delete /user/coverletter/:id': 'CoverLetterController.destroy',
   

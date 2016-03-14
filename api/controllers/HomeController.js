@@ -14,12 +14,14 @@ module.exports = {
     User.findOne({email: req.user.email})
       .populate('resumes')
       .populate('coverLetters')
+      .populate('profilePics')
       .exec(function(err, user) {
         console.log(user);
         user.password = undefined;
         return res.view('dashboard', {
           resumes: user.resumes,
-          coverLetters: user.coverLetters
+          coverLetters: user.coverLetters,
+          profilePics: user.profilePics
         });
       })
   }
