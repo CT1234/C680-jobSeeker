@@ -13,6 +13,8 @@ module.exports = {
 
 	signUp: function(req, res) {
     User.create(req.body).exec(function userCreated(err, user) {
+      user.password = undefined;
+      console.log(user);
       if(err) {
         console.log(err);
         return res.redirect('/signup');
@@ -22,7 +24,7 @@ module.exports = {
             console.log(err);
             return res.redirect('/signup');
           } else {
-            res.redirect('/');
+            res.redirect('/dashboard');
           }
         });
       }
@@ -40,7 +42,7 @@ module.exports = {
             console.log(err);
             res.redirect('/login');
           } else {
-            res.redirect('/');
+            res.redirect('/dashboard');
           }
         })
       }
