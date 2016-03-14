@@ -13,12 +13,11 @@ module.exports = {
 
 	signUp: function(req, res) {
     User.create(req.body).exec(function userCreated(err, user) {
-      user.password = undefined;
-      console.log(user);
       if(err) {
         console.log(err);
         return res.redirect('/signup');
       } else {
+        user.password = undefined
         req.login(user, function(err) {
           if(err) {
             console.log(err);
