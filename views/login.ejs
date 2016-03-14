@@ -1,16 +1,37 @@
 <p id="jobSeeker"><span style="color: #ddeeff">job</span><span style="color: #04507e; font-family: Veredana">Seeker</span></p>
 <div id="loginForm">
     <form method="POST" action="/login">
-        <div class="form-group">
-            Email
-            <br> <input type="email" name="email" id="email" class="form-control">
+
+        <div class="form-group row">
+            <label for="email" class="col-sm-offset-2 col-sm-2 form-control-label">Email</label>
+
+            <div class="col-sm-4">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+            </div>
         </div>
-        <div class="form-group">
-            Password
-            <br><input type="password" name="password" id="password" class="form-control">
+        <div class="form-group row">
+            <label for="password" class="col-sm-offset-2 col-sm-2 form-control-label">Password</label>
+            <div class="col-sm-4">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+            </div>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <div class="form-group row">
+            <div class="col-sm-offset-1 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
     </form>
+
 </div>
+
 <p id="newUser">New user? <a href="/signup">Sign up now!</a></p>
 
+<!--<div class="form-group row">
+    <div class="col-sm-offset-5">
+        <div id="FBButton">
+            <a href="https://www.facebook.com">
+    Friend us on <span style="color: white">FaceBook!</span>
+    </a>
+        </div>
+    </div>
+</div>>
