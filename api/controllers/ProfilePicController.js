@@ -7,36 +7,38 @@
 
 module.exports = {
 	create: function(req, res) {
-    req.file('profilePic').upload({
-     maxBytes: 10000000, 
-        saveAs: function(file, cb) {
-    cb(null, "myPic.jpg");      
-  },
+    req.file('profilePic')
+    .upload({
+      maxBytes: 10000000, 
+      saveAs: function(file, cb) {
+                cb(null, "myPic.jpg");
+      },
         dirname: '../../assets/images/' 
-   }, function whenDone(err, uploadedFiles) {
-    if(err) {
-      console.log(err);
-      return res.negotiate(err);
-    }
+    },
+    function whenDone(err, uploadedFiles) {
+      if(err) {
+        console.log(err);
+        return res.negotiate(err);
+      }
 
-    if(uploadedFiles.length === 0) {
-      return res.badRequest('No file was uploaded');
-    }
-    User.findOne({email: req.user.email}).exec(function(err, user) {
-      ProfilePic.create({
-        name: uploadedFiles[0].filename,
-        fileDescriptor: uploadedFiles[0].fd,
-        owner: user.id
-      })
-      .exec(function(err) {
-        if(err) {
-          console.log(err);
-          return res.negotiate(err);
-        } else {
-          res.redirect('/dashboard');
-        }
+      if(uploadedFiles.length === 0) {
+        return res.badRequest('No file was uploaded');
+      }
+      User.findOne({email: req.user.email}).exec(function(err, user) {
+        ProfilePic.create({
+          name: uploadedFiles[0].filename,
+          fileDescriptor: uploadedFiles[0].fd,
+          owner: user.id
+        })
+        .exec(function(err) {
+          if(err) {
+            console.log(err);
+            return res.negotiate(err);
+          } else {
+            res.redirect('/dashboard');
+          }
+        });
       });
-    });
    });
   },
   show: function(req, res) {
