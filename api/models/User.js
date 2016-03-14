@@ -30,6 +30,10 @@ module.exports = {
       var obj = this.toObject();
       delete obj.password;
       return obj;
+    },
+    jobs: {
+      collection: 'job',
+      via: 'owner'
     }
   },
   beforeCreate: function(user, cb) {

@@ -48,7 +48,12 @@ module.exports.routes = {
   'get /user/resume/:id': 'ResumeController.show',
   'get /user/coverletter/:id': 'CoverLetterController.show',
   'delete /user/resume/:id': 'ResumeController.destroy',
-  'delete /user/coverletter/:id': 'CoverLetterController.destroy'
+  'delete /user/coverletter/:id': 'CoverLetterController.destroy',
+  
+  'get /job/applications': 'JobController.applications',
+  'get /job/add': 'JobController.add',
+  'post /job/create' : 'JobController.create'
+  
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

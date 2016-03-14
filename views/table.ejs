@@ -1,0 +1,30 @@
+<div class="JobAppsTable">
+    <div class="panel-group">
+    <% var i; %>
+    <% for (i = 0; i < jobs.length; i++) { %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a jobs-toggle="collapse" jobs-parent="#accordion" href="#accordionOne"> <%= jobs[i].name %></a>
+                        <span>,</span>
+                        <a jobs-toggle="collapse" jobs-parent="#accordion" href="#accordionOne"> <%= jobs[i].position %></a>
+                    </h4>
+                </div>
+                <div id="accordionOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <ul>
+                            <li>Date Applied: <%= jobs[i].dateApplied %> </li>
+                            <li>InterviewDate:  <%= jobs[i].dateInterview %> </li>
+                            <li>Contact:  <%= jobs[i].contact %> </li>
+                            <li>Phone:  <%= jobs[i].phone %> </li>
+                            <li>Email:  <%= jobs[i].email %> </li>
+                            <li>LinkedIn:  <%= jobs[i].linkedIn %> </li>
+                            <li>Applied: <%= jobs[i].applied %> </li>
+                            <li>Notes: <%= jobs[i].notes %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    <% } %>
+    </div>
+</div>
