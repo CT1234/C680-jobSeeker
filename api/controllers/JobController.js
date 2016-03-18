@@ -13,6 +13,7 @@ module.exports = {
 
     create: function(req, res) {
         User.findOne({ email: req.user.email }).exec(function(err, user) {
+            req.body.owner = user.id;
             Job.create(req.body).exec(function(err) {
                 if (err) {
                     console.log(err);
