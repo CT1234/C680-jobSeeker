@@ -17,10 +17,10 @@ module.exports = {
       type: 'string'
     },    
     dateApplied: {
-      type: 'string'
+      type: 'date'
     },    
-    dateInterview: {
-      type: 'string'
+    interviewDate: {
+      type: 'date'
     },    
     contact: {
       type: 'string'
@@ -32,13 +32,13 @@ module.exports = {
       type: 'string'
     },    
     applied: {
-      type: 'string'
+      type: 'boolean'
     },   
     linkedIn: {
       type: 'string'
     },    
     notes: {
-      type: 'string'
+      type: 'text'
     }
-  },
+  }
 };
