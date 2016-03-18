@@ -30,7 +30,7 @@ module.exports = {
         .populate('jobs')
         .exec(function(err, user) {
             console.log(user);
-            return res.view('table', {
+            return res.view('jobApplicationIndex', {
                         jobs: user.jobs
             });
         });

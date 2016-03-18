@@ -1,0 +1,37 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% jobs.forEach(function(job, index) { %>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading<%= index+1 %>">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>" aria-expanded="true" aria-controls="collapse<%= index+1 %>">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <%= job.name %>
+            </a>
+          </h4>
+        </div><!-- panel-heading -->
+        <div id="collapse<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= index+1 %>">
+          <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Position:</dt>
+                <dd><%= job.position %></dd>
+                <dt>Date Applied:</dt>
+                <dd><%= job.dateApplied %></dd>
+                <dt>Interview Date:</dt>
+                <dd><%= job.interviewDate %></dd>
+                <dt>Contact:</dt>
+                <dd><%= job.contact %></dd>
+                <dt>Phone Number:</dt>
+                <dd><%= job.phone %></dd>
+                <dt>Email:</dt>
+                <dd><%= job.email %></dd>
+                <dt>LinkedIn:</dt>
+                <dd><%= job.linkedIn %></dd>
+                <dt>Application Status:</dt>
+                <dd><%= job.applied === true ? "Yes" : "No" %></dd>
+                <dt>Notes:</dt>
+                <dd><%= job.notes %></dd>
+            </dl>
+          </div><!-- panel-body -->
+        </div><!-- panel-collapse -->
+    </div><!-- panel panel-default -->
+     <% }) %>
+</div><!-- panel-group -->
