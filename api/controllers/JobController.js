@@ -7,8 +7,8 @@
 
 module.exports = {
     
-    add: function(req, res) {
-        return res.view('tableInput');
+    new: function(req, res) {
+        return res.view('jobApplicationForm');
     },
 
     create: function(req, res) {

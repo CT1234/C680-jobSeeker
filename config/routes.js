@@ -54,7 +54,7 @@ module.exports.routes = {
   'delete /user/coverletter/:id': 'CoverLetterController.destroy',
   
   'get /job/applications': 'JobController.applications',
-  'get /job/add': 'JobController.add',
+  'get /job/new': 'JobController.new',
   'post /job/create' : 'JobController.create'
   
   /***************************************************************************
