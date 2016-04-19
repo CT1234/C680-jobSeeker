@@ -8,7 +8,8 @@ $(function() {
   //   console.log(middleH2);
   //   document.querySelector('#FBButton').style.left=middleH2;
   // };
-
+    
+    
   var deleteLinks = {
     initialize: function() {
       this.methodLinks = $('a[data-method]');
@@ -35,6 +36,8 @@ $(function() {
         }
       }
 
+        
+        
       $.ajax({
         url: link.attr('href'),
         method: httpMethod,

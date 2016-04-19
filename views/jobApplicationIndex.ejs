@@ -44,8 +44,8 @@
                         <dd>
                             <%= job.applied === true ? "Yes" : "No" %>
                         </dd>
-                        <dt>Notes:</dt>
-                        <dd>
+                        <dt >Notes:</dt>
+                        <dd class="notes<%= index+1 %>">
                             <%= job.notes %>
                         </dd>
                     </dl>
@@ -70,9 +70,22 @@
     <option value="joplin, mo">Joplin, MO</option>
 </select>
 
+   
+
 <div id="map"></div>
 <script>
+     function updateDirections(s, a)
+    {
+         console.log("hello" + this+s+a); 
+    }
     function initMap() {
+         $( "a" ).click(function() {
+             var $input = $( this );
+             var colS =  $input.attr( "aria-controls" );
+             var indexJ = ".notes" + colS.slice(-1);
+            var address = $(indexJ).text();
+            updateDirections(colS, address);
+        });
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -90,6 +103,8 @@
         document.getElementById('start').addEventListener('change', onChangeHandler);
         document.getElementById('end').addEventListener('change', onChangeHandler);
     }
+    
+       
 
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
@@ -104,5 +119,7 @@
             }
         });
     }
+    
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>

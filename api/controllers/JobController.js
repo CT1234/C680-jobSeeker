@@ -31,7 +31,8 @@ module.exports = {
         .exec(function(err, user) {
             console.log(user);
             return res.view('jobApplicationIndex', {
-                        jobs: user.jobs
+                        jobs: user.jobs,
+                user: user
             });
         });
     }
