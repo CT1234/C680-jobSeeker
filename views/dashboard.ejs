@@ -1,12 +1,24 @@
 <div class="row well">
+  <h2>Profile</h2>
+  <hr />
   <div class="col-sm-4">
-    <hr />
     <img src="/images/myPic.jpg" onerror="if (this.src != 'error.jpg') this.src = '/images/nobody.jpg';" height= "150" >
     <form action="/user/profilePic" method="POST" enctype="multipart/form-data">
         <div class="form-group">
         <input type="file" name="profilePic" id="profilePic"  class="filestyle" data-input="false" data-buttonText="Find picture">
         </div>
         <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+  </div>
+  <div class="col-sm-8">
+  <h3>Addresss:</h3>
+    <p><%= user.address %></p>
+    <form action="/user/update" method="POST">
+      <div class="form-group">
+        <label for="address">Update Address:</label>
+        <textarea name="address" id="address" rows="5" class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Address</button>
     </form>
   </div>
 </div>

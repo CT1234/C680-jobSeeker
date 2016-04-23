@@ -42,6 +42,7 @@ module.exports.routes = {
   '/logout': 'UserController.logout',
   'get /signup': 'UserController.new',
   'post /signup': 'UserController.signup',
+  'post /user/update': 'UserController.update',
 
   'post /user/resume': 'ResumeController.create',
   'post /user/profilePic': 'ProfilePicController.create',

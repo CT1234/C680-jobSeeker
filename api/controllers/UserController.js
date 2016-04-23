@@ -51,6 +51,16 @@ module.exports = {
   logout: function(req, res) {
     req.logout();
     res.redirect('/');
+  },
+
+  update: function(req, res) {
+    User.update({email: req.user.email},{address: req.body.address}).exec(function(err, updatedUser) {
+      if(err) {
+        console.log(err);
+      }
+      res.redirect('/dashboard');
+      console.log(updatedUser);
+    });
   }
 };
 
