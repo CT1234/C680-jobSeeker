@@ -1,5 +1,17 @@
 <div class="row well">
   <div class="col-sm-4">
+    <hr />
+    <img src="/images/myPic.jpg" onerror="if (this.src != 'error.jpg') this.src = '/images/nobody.jpg';" height= "150" >
+    <form action="/user/profilePic" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+        <input type="file" name="profilePic" id="profilePic"  class="filestyle" data-input="false" data-buttonText="Find picture">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+  </div>
+</div>
+<div class="row well">
+  <div class="col-sm-12">
     <h2>Resumes</h2>
     <hr />
     <% if (resumes.length > 0) { %>
@@ -26,7 +38,7 @@
       <button type="submit" class="btn btn-primary">Upload</button>
     </form>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <h2>Cover Letters</h2>
     <hr />
     <% if (coverLetters.length > 0) { %>
@@ -53,15 +65,4 @@
       <button type="submit" class="btn btn-primary">Upload</button>
     </form>
   </div>
-  <div class="col-sm-4">
-    <hr />
-    <img src="/images/myPic.jpg" onerror="if (this.src != 'error.jpg') this.src = '/images/nobody.jpg';" height= "150" >
-    <form action="/user/profilePic" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-        <input type="file" name="profilePic" id="profilePic"  class="filestyle" data-input="false" data-buttonText="Find picture">
-        </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
-  </div>
-
 </div>
