@@ -39,6 +39,9 @@ module.exports = {
     },    
     notes: {
       type: 'text'
+    },
+    address: {
+      type: 'string'
     }
   }
 };
