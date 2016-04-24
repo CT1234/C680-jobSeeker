@@ -18,12 +18,18 @@ module.exports = {
     if(uploadedFiles.length === 0) {
       return res.badRequest('No file was uploaded');
     }
-    User.findOne({email: req.user.email}).exec(function(err, user) {
-      CoverLetter.create({
+    User.findOne({email: req.user.email})
+    .populate('coverLetters')
+    .exec(function(err, user) {
+      var coverLetterData = {
         name: uploadedFiles[0].filename,
         fileDescriptor: uploadedFiles[0].fd,
         owner: user.id
-      })
+      }
+      if(!user.coverLetters.length > 0) {
+        coverLetterData.default = true;
+      }
+      CoverLetter.create(coverLetterData)
       .exec(function(err) {
         if(err) {
           console.log(err);
