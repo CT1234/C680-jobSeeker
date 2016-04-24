@@ -14,6 +14,10 @@ module.exports = {
     fileDescriptor: {
       type: 'string'
     },
+    default: {
+      type: 'boolean',
+      defaultsTo: false
+    },
     owner: {
       model: 'user'
     }
