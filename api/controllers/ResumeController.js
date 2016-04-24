@@ -18,12 +18,18 @@ module.exports = {
     if(uploadedFiles.length === 0) {
       return res.badRequest('No file was uploaded');
     }
-    User.findOne({email: req.user.email}).exec(function(err, user) {
-      Resume.create({
+    User.findOne({email: req.user.email})
+    .populate('resumes')
+    .exec(function(err, user) {
+      var resumeData = {
         name: uploadedFiles[0].filename,
         fileDescriptor: uploadedFiles[0].fd,
         owner: user.id
-      })
+      };
+      if(!user.resumes.length > 0) {
+        resumeData.default = true;
+      }
+      Resume.create(resumeData)
       .exec(function(err) {
         if(err) {
           console.log(err);
