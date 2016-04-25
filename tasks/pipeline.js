@@ -32,6 +32,8 @@ var jsFilesToInject = [
 
   'js/dependencies/bootstrap.min.js',
 
+  '/js/dependencies/jquery.dataTables.js',
+
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
 

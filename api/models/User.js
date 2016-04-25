@@ -18,6 +18,9 @@ module.exports = {
       minLength: 6,
       required: true
     },
+    address: {
+      type: 'string'
+    },
     resumes: {
       collection: 'resume',
       via: 'owner'

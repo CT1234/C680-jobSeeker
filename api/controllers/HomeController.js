@@ -19,6 +19,7 @@ module.exports = {
         console.log(user);
         user.password = undefined;
         return res.view('dashboard', {
+          user: user,
           resumes: user.resumes,
           coverLetters: user.coverLetters,
           profilePics: user.profilePics
