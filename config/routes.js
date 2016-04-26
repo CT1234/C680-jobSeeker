@@ -56,7 +56,10 @@ module.exports.routes = {
   
   'get /job/applications': 'JobController.applications',
   'get /job/new': 'JobController.new',
-  'post /job/create' : 'JobController.create'
+  'post /job/create' : 'JobController.create',
+
+  'put /user/resume/:id': 'ResumeController.update',
+  'put /user/coverletter/:id': 'CoverLetterController.update'
   
   /***************************************************************************
   *                                                                          *

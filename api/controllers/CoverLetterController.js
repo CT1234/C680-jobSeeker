@@ -26,6 +26,9 @@ module.exports = {
         fileDescriptor: uploadedFiles[0].fd,
         owner: user.id
       }
+      if(req.body.letterNotes) {
+        coverLetterData.notes = req.body.letterNotes;
+      }
       if(!user.coverLetters.length > 0) {
         coverLetterData.default = true;
       }
@@ -87,6 +90,38 @@ module.exports = {
       }
 
       return res.ok();
+    });
+  },
+  update: function(req, res) {
+    console.log('y');
+    CoverLetter.findOne({default: true}).exec(function(err, oldDefault) {
+      if(err) {
+        return res.negotiate(err);
+      }
+
+      if(oldDefault) {
+        CoverLetter.update({id: oldDefault.id}, {default: false}).exec(function(err, oldDefault) {
+          if(err) {
+            return res.negotiate(err);
+          }
+
+          CoverLetter.update({id: req.param('id')}, {default: true}).exec(function(err, newDefault) {
+            if(err) {
+              return res.negotiate(err);
+            }
+
+            return res.ok();
+          });
+        });
+      } else {
+        CoverLetter.update({id: req.param('id')}, {default: true}).exec(function(err, newDefault) {
+          if(err) {
+            return res.negotiate(err);
+          }
+
+          return res.ok();
+        });
+      }
     });
   }
 };

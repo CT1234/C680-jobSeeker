@@ -16,7 +16,6 @@ module.exports = {
       .populate('coverLetters')
       .populate('profilePics')
       .exec(function(err, user) {
-        console.log(user);
         user.password = undefined;
         return res.view('dashboard', {
           user: user,

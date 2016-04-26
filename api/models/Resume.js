@@ -14,6 +14,9 @@ module.exports = {
     fileDescriptor: {
       type: 'string'
     },
+    notes: {
+      type: 'string'
+    },
     default: {
       type: 'boolean',
       defaultsTo: false

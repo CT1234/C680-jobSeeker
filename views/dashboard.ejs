@@ -27,25 +27,47 @@
     <h2>Resumes</h2>
     <hr />
     <% if (resumes.length > 0) { %>
-      <ul class="list-group">
-        <% resumes.forEach(function(resume) { %>
-          <li class="list-group-item">
-            <a href="/user/resume/<%= resume.id %>">
-              <%= resume.name %>
-            </a>
-            <a href="/user/resume/<%= resume.id %>" 
-               data-method="delete" class="pull-right">
-                <span class="glyphicon glyphicon-remove"></span>
-            </a>
-          </li>
-        <% }) %>
-      </ul>
+      <% resumes.forEach(function(resume) { %>
+        <% if(resume.default) { %>
+          <h4>Default:</h4>
+          <p><%= resume.name %></p>
+        <% } %>
+      <% }) %>
+      <table class="table table-striped dt-responsive nowrap">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% resumes.forEach(function(resume) { %>
+            <tr>
+              <td><%= resume.name %></td>
+              <td><%= resume.notes || "No notes" %></td>
+              <td>
+                <a href="/user/resume/<%= resume.id %>" class="btn btn-danger" data-method="delete">
+                  Delete
+                </a>
+                  <a href="/user/resume/<%= resume.id %>" class="btn btn-primary" data-method="put"<%= resume.default ? "disabled" : "" %>>
+                    Mark as Default
+                  </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
     <% } else { %>
       <p>No resumes uploaded.</p>
     <% } %>
     <form action="/user/resume" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <input type="file" name="resume" id="resume"  class="filestyle" data-input="false" data-buttonText="Find resume">
+      </div>
+      <div class="form-group">
+        <label for="resumeNotes">Notes:</label>
+        <textarea name="resumeNotes" id="resumeNotes" rows="5" class="form-control"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Upload</button>
     </form>
@@ -54,25 +76,47 @@
     <h2>Cover Letters</h2>
     <hr />
     <% if (coverLetters.length > 0) { %>
-      <ul class="list-group">
-        <% coverLetters.forEach(function(coverLetter) { %>
-          <li class="list-group-item">
-            <a href="/user/coverletter/<%= coverLetter.id %>">
-              <%= coverLetter.name %>
-            </a>
-            <a href="/user/coverletter/<%= coverLetter.id %>" 
-               data-method="delete" class="pull-right">
-                <span class="glyphicon glyphicon-remove"></span>
-            </a>
-          </li>
-        <% }) %>
-      </ul>
+      <% coverLetters.forEach(function(coverLetter) { %>
+        <% if(coverLetter.default) { %>
+          <h4>Default:</h4>
+          <p><%= coverLetter.name %></p>
+        <% } %>
+      <% }) %>
+      <table class="table table-striped dt-responsive nowrap">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% coverLetters.forEach(function(coverLetter) { %>
+            <tr>
+              <td><%= coverLetter.name %></td>
+              <td><%= coverLetter.notes || "No notes" %></td>
+              <td>
+                <a href="/user/coverletter/<%= coverLetter.id %>" class="btn btn-danger" data-method="delete">
+                  Delete
+                </a>
+                  <a href="/user/coverletter/<%= coverLetter.id %>" class="btn btn-primary" data-method="put"<%= coverLetter.default ? "disabled" : "" %>>
+                    Mark as Default
+                  </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
     <% } else { %>
       <p>No cover letters uploaded.</p>
     <% } %>
       <form action="/user/coverletter" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <input type="file" name="coverLetter" id="coverLetter" class="filestyle" data-input="false" data-buttonText="Find cover letter">
+      </div>
+      <div class="form-group">
+        <label for="letterNotes">Notes:</label>
+        <textarea name="letterNotes" id="letterNotes" rows="5" class="form-control"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Upload</button>
     </form>

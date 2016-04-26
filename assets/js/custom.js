@@ -1,14 +1,6 @@
 $(function() {
-  // var middleH = window.innerWidth /2 - 60;
-  // document.querySelector('#FBButton').style.left=middleH;
-  // window.addEventListener("resize", myResize);
-
-  // function myResize() {
-  //   var middleH2 = window.innerWidth /2 - 60;
-  //   console.log(middleH2);
-  //   document.querySelector('#FBButton').style.left=middleH2;
-  // };
-
+  $('table').DataTable();
+  
   var deleteLinks = {
     initialize: function() {
       this.methodLinks = $('a[data-method]');
@@ -23,6 +15,9 @@ $(function() {
       e.preventDefault();
       e.stopPropagation();
       var link = $(this);
+      if(link.attr("disabled")) {
+        return;
+      }
       var httpMethod = link.data('method').toUpperCase();
 
       if ($.inArray(httpMethod, ['PUT', 'DELETE']) === - 1) {

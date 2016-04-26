@@ -26,6 +26,11 @@ module.exports = {
         fileDescriptor: uploadedFiles[0].fd,
         owner: user.id
       };
+
+      if(req.body.resumeNotes) {
+        resumeData.notes = req.body.resumeNotes;
+      }
+
       if(!user.resumes.length > 0) {
         resumeData.default = true;
       }
@@ -87,6 +92,37 @@ module.exports = {
       }
 
       return res.ok();
+    });
+  },
+  update: function(req, res) {
+    Resume.findOne({default: true}).exec(function(err, oldDefault) {
+      if(err) {
+        return res.negotiate(err);
+      }
+
+      if(oldDefault) {
+        Resume.update({id: oldDefault.id}, {default: false}).exec(function(err, oldDefault) {
+          if(err) {
+            return res.negotiate(err);
+          }
+
+          Resume.update({id: req.param('id')}, {default: true}).exec(function(err, newDefault) {
+            if(err) {
+              return res.negotiate(err);
+            }
+
+            return res.ok();
+          });
+        });
+      } else {
+        Resume.update({id: req.param('id')}, {default: true}).exec(function(err, newDefault) {
+          if(err) {
+            return res.negotiate(err);
+          }
+
+          return res.ok();
+        });
+      }
     });
   }
 };
