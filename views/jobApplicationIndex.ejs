@@ -1,3 +1,4 @@
+<section>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% jobs.forEach(function(job, index) { %>
         <div class="panel panel-default">
@@ -54,19 +55,21 @@
                         <dt visibility: hidden> UserAddress:</dt>
                          <dd class="Uaddress<%= index+1 %>" visibility: hidden><%= user.address %></dd>
                     </dl>
+
                 </div>
                 <!-- panel-body -->
+               
             </div>
             <!-- panel-collapse -->
+            
         </div>
         <!-- panel panel-default -->
         <% }) %>
 </div>
 
-
-   
-
-<div id="map"></div>
+ <div id="map"></div>
+ 
+</section>
 <script>
      
     function initMap() {

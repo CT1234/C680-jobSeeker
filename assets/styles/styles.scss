@@ -18,10 +18,8 @@ body {
   font-size: 3em;
 }
 
-#map {
-        height: 300px;
-        width: 400px;
-      }
+
+      
 
 #signUp{
   text-align: center;
@@ -29,6 +27,10 @@ body {
   font-size: 3em;
 }
 
+section {
+    
+    margin: 0;
+}
 #newUser{
   margin-top: 10px;
   text-align: center;
@@ -42,6 +44,21 @@ body {
   width: 120px;
   margin: auto;
   text-align: center;
+}
+
+div#map {
+    float: right;
+    margin-left: 5%;
+    height: 300px;
+        width: 40%;
+}
+
+div#accordion {
+    float: left;
+    width: 55%;
+}
+.panel-group {
+    max-width: 50vw;
 }
 
 a {
