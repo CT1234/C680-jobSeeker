@@ -22,4 +22,13 @@ describe('UserController', function() {
     });
   });
 
+  describe('unauthenticated', function() {
+    it('should redirect to login if youre not logged in', function(done) {
+      request(sails.hooks.http.app)
+        .get('/dashboard')
+        .expect(302)
+        .expect('location','/login',done);
+    });
+  });
+
 });
