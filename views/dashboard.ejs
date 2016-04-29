@@ -12,13 +12,15 @@
   </div>
   <div class="col-sm-8">
   <h3>Addresss:</h3>
-    <p><%= user.address %></p>
+  <% if(user.address) { %>
+    <p id="userAddress"><%= user.address %></p>
+  <% } %>
     <form action="/user/update" method="POST">
       <div class="form-group">
         <label for="address">Update Address:</label>
         <textarea name="address" id="address" rows="5" class="form-control"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Update Address</button>
+      <button type="submit" class="btn btn-primary" id="updateAddress">Update Address</button>
     </form>
   </div>
 </div>

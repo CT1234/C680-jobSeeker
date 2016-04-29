@@ -6,7 +6,8 @@ var selenium = require('selenium-webdriver'),
     userInfo = { 
       email: 'test' + Math.round(Math.random()*10) + 1 + '@test.com',
       password: '123456'
-    };
+    },
+    address = '1234 New Street, Northridge, CA 91304';
 
 before(function(done) {
   driver = new selenium.Builder()
@@ -53,4 +54,19 @@ describe('Logging in:', function() {
      done();
     });
   });
+});
+
+describe('dashboard', function() {
+  beforeEach(function() {
+    driver.get ('http://localhost:1337/dashboard');
+  });
+
+  it('should be able to update address', function(done) {
+    driver.findElement(By.name('address')).sendKeys(address);
+    driver.findElement(By.id('updateAddress')).click();
+    driver.findElement(By.id('userAddress')).getText().then(function(text) {
+      (text).should.equal(address);
+      done();
+    })
+  })
 });
