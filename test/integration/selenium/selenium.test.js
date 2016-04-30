@@ -72,6 +72,32 @@ describe('Logging in:', function() {
   });
 });
 
+describe('Jobs', function() {
+  beforeEach(function() {
+    driver.get('http://localhost:1337/job/new');
+  });
+
+  it('should be able to add a new job application', function(done) {
+    driver.findElement(By.name('name')).sendKeys(testCompany.name);
+    driver.findElement(By.name('position')).sendKeys(testCompany.position);
+    driver.findElement(By.name('dateApplied')).sendKeys(testCompany.applied);
+    driver.findElement(By.name('interviewDate')).sendKeys(testCompany.interviewDate);
+    driver.findElement(By.name('contact')).sendKeys(testCompany.contactName);
+    driver.findElement(By.name('phone')).sendKeys(testCompany.phone);
+    driver.findElement(By.name('email')).sendKeys(testCompany.email);
+    driver.findElement(By.name('linkedIn')).sendKeys(testCompany.linkedIn);
+    driver.findElement(By.name('notes')).sendKeys(testCompany.notes);
+    driver.findElement(By.name('address')).sendKeys(testCompany.address);
+    driver.findElement(By.className('btn-default')).click();
+    driver.get('http://localhost:1337/job/applications');
+    driver.findElement(By.css('[href="#collapse1"]')).getText().then(function(text) {
+      console.log(text);
+      (text).should.equal(testCompany.name);
+      done();
+    });
+  });
+});
+
 describe('dashboard', function() {
   beforeEach(function() {
     driver.get('http://localhost:1337/dashboard');
