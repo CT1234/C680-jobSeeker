@@ -19,7 +19,11 @@ var selenium = require('selenium-webdriver'),
       linkedIn: 'FooBar',
       notes: 'notesssss',
       address: '1234 google st, northridge, ca 90505'
-    }
+    },
+    path = require('path'),
+    realPath = path.dirname(path.dirname(path.dirname(__dirname))),
+    coverLetterPath = path.resolve(realPath, 'test/fixtures/coverLetter.pdf'),
+    resumePath = path.resolve(realPath, 'test/fixtures/resume.pdf');
 
 before(function(done) {
   driver = new selenium.Builder()
@@ -70,7 +74,7 @@ describe('Logging in:', function() {
 
 describe('dashboard', function() {
   beforeEach(function() {
-    driver.get ('http://localhost:1337/dashboard');
+    driver.get('http://localhost:1337/dashboard');
   });
 
   it('should be able to update address', function(done) {
@@ -81,29 +85,21 @@ describe('dashboard', function() {
       done();
     })
   });
-});
 
-describe('Jobs', function() {
-  beforeEach(function() {
-    driver.get('http://localhost:1337/job/new');
+  it('should be able to upload a resume and set it as default', function(done) {
+    driver.findElement(By.name('resume')).sendKeys(resumePath);
+    driver.findElement(By.id('resumeUploadButton')).click();
+    driver.findElement(By.id('defaultResume')).getText().then(function(text) {
+      (text).should.equal('resume.pdf');
+      done();
+    });
   });
 
-  it('should be able to add a new job application', function(done) {
-    driver.findElement(By.name('name')).sendKeys(testCompany.name);
-    driver.findElement(By.name('position')).sendKeys(testCompany.position);
-    driver.findElement(By.name('dateApplied')).sendKeys(testCompany.applied);
-    driver.findElement(By.name('interviewDate')).sendKeys(testCompany.interviewDate);
-    driver.findElement(By.name('contact')).sendKeys(testCompany.contactName);
-    driver.findElement(By.name('phone')).sendKeys(testCompany.phone);
-    driver.findElement(By.name('email')).sendKeys(testCompany.email);
-    driver.findElement(By.name('linkedIn')).sendKeys(testCompany.linkedIn);
-    driver.findElement(By.name('notes')).sendKeys(testCompany.notes);
-    driver.findElement(By.name('address')).sendKeys(testCompany.address);
-    driver.findElement(By.className('btn-default')).click();
-    driver.get('http://localhost:1337/job/applications');
-    driver.findElement(By.css('[href="#collapse1"]')).getText().then(function(text) {
-      console.log(text);
-      (text).should.equal(testCompany.name);
+  it('should be able to upload a cover letter and set it as default', function(done) {
+    driver.findElement(By.name('coverLetter')).sendKeys(coverLetterPath);
+    driver.findElement(By.id('coverLetterUploadButton')).click();
+    driver.findElement(By.id('defaultCoverLetter')).getText().then(function(text) {
+      (text).should.equal('coverLetter.pdf');
       done();
     });
   });

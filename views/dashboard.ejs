@@ -32,7 +32,7 @@
       <% resumes.forEach(function(resume) { %>
         <% if(resume.default) { %>
           <h4>Default:</h4>
-          <p><%= resume.name %></p>
+          <p id="defaultResume"><%= resume.name %></p>
         <% } %>
       <% }) %>
       <table class="table table-striped dt-responsive nowrap">
@@ -71,7 +71,7 @@
         <label for="resumeNotes">Notes:</label>
         <textarea name="resumeNotes" id="resumeNotes" rows="5" class="form-control"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Upload</button>
+      <button type="submit" class="btn btn-primary" id="resumeUploadButton">Upload</button>
     </form>
   </div>
   <div class="col-sm-12">
@@ -81,7 +81,7 @@
       <% coverLetters.forEach(function(coverLetter) { %>
         <% if(coverLetter.default) { %>
           <h4>Default:</h4>
-          <p><%= coverLetter.name %></p>
+          <p id="defaultCoverLetter"><%= coverLetter.name %></p>
         <% } %>
       <% }) %>
       <table class="table table-striped dt-responsive nowrap">
@@ -120,7 +120,7 @@
         <label for="letterNotes">Notes:</label>
         <textarea name="letterNotes" id="letterNotes" rows="5" class="form-control"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Upload</button>
+      <button type="submit" class="btn btn-primary" id="coverLetterUploadButton">Upload</button>
     </form>
   </div>
 </div>

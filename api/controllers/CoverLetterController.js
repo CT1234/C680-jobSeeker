@@ -93,7 +93,6 @@ module.exports = {
     });
   },
   update: function(req, res) {
-    console.log('y');
     CoverLetter.findOne({default: true}).exec(function(err, oldDefault) {
       if(err) {
         return res.negotiate(err);

@@ -59,7 +59,6 @@ module.exports = {
         console.log(err);
       }
       res.redirect('/dashboard');
-      console.log(updatedUser);
     });
   }
 };

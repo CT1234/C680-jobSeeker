@@ -29,7 +29,6 @@ module.exports = {
         User.findOne({email: req.user.email})
         .populate('jobs')
         .exec(function(err, user) {
-            console.log(user);
             return res.view('jobApplicationIndex', {
                         jobs: user.jobs
             });

@@ -34,7 +34,7 @@ describe('ResumeController', function() {
   });
 
   describe('#create()', function() {
-    it('should allow me to upload a new cover letter', function(done) {
+    it('should allow me to upload a new resume', function(done) {
       agent
         .post('/user/resume')
         .field('name', 'resume')
