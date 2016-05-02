@@ -30,7 +30,13 @@ module.exports.policies = {
 
   UserController: {
     '*': true
-  }
+  },
+    
+    publicProfileController: {
+        showPublic: true,
+        showUser: true
+    }
+    
 
   /***************************************************************************
   *                                                                          *

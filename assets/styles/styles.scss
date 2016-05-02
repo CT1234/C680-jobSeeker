@@ -37,11 +37,15 @@ section {
 }
 
 #FBButton {
+position: fixed;
+    bottom: 20px;
+    left:35%;
+  
   border-radius: 5px;
   border: 2px solid #6495ED;
   background-color: #BCD2EE;
-  height: 45px;
-  width: 120px;
+  height: 25px;
+  width: 350px;
   margin: auto;
   text-align: center;
 }
