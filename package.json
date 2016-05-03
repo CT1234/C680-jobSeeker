@@ -21,6 +21,8 @@
     "grunt-sync": "0.2.4",
     "include-all": "~0.1.6",
     "mocha": "^2.4.5",
+    "node-schedule": "^1.1.0",
+    "nodemailer": "^2.3.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "rc": "1.0.1",

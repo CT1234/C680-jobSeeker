@@ -46,7 +46,7 @@
         <tbody>
           <% resumes.forEach(function(resume) { %>
             <tr>
-              <td><%= resume.name %></td>
+              <td><a href="/user/resume/<%= resume.id%>"><%= resume.name %></a></td>
               <td><%= resume.notes || "No notes" %></td>
               <td>
                 <a href="/user/resume/<%= resume.id %>" class="btn btn-danger" data-method="delete">
@@ -95,7 +95,7 @@
         <tbody>
           <% coverLetters.forEach(function(coverLetter) { %>
             <tr>
-              <td><%= coverLetter.name %></td>
+              <td><a href="/user/coverletter/<%= coverLetter.id%>"><%= coverLetter.name %></a></td>
               <td><%= coverLetter.notes || "No notes" %></td>
               <td>
                 <a href="/user/coverletter/<%= coverLetter.id %>" class="btn btn-danger" data-method="delete">
