@@ -18,25 +18,51 @@ body {
   font-size: 3em;
 }
 
+
+      
+
 #signUp{
   text-align: center;
   font-family: serif;
   font-size: 3em;
 }
 
+section {
+    
+    margin: 0;
+}
 #newUser{
   margin-top: 10px;
   text-align: center;
 }
 
 #FBButton {
+position: fixed;
+    bottom: 20px;
+    left:35%;
+  
   border-radius: 5px;
   border: 2px solid #6495ED;
   background-color: #BCD2EE;
-  height: 45px;
-  width: 120px;
+  height: 25px;
+  width: 350px;
   margin: auto;
   text-align: center;
+}
+
+div#map {
+    float: right;
+    margin-left: 5%;
+    height: 300px;
+        width: 40%;
+}
+
+div#accordion {
+    float: left;
+    width: 55%;
+}
+.panel-group {
+    max-width: 50vw;
 }
 
 a {

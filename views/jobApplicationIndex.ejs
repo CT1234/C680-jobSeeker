@@ -1,39 +1,131 @@
+<section>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% jobs.forEach(function(job, index) { %>
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading<%= index+1 %>">
-          <h4 class="panel-title">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading<%= index+1 %>">
+                <h4 class="panel-title">
             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>" aria-expanded="true" aria-controls="collapse<%= index+1 %>">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <%= job.name %>
             </a>
           </h4>
-        </div><!-- panel-heading -->
-        <div id="collapse<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= index+1 %>">
-          <div class="panel-body">
-            <dl class="dl-horizontal">
-                <dt>Position:</dt>
-                <dd><%= job.position %></dd>
-                <dt>Date Applied:</dt>
-                <dd><%= job.dateApplied %></dd>
-                <dt>Interview Date:</dt>
-                <dd><%= job.interviewDate %></dd>
-                <dt>Contact:</dt>
-                <dd><%= job.contact %></dd>
-                <dt>Phone Number:</dt>
-                <dd><%= job.phone %></dd>
-                <dt>Email:</dt>
-                <dd><%= job.email %></dd>
-                <dt>LinkedIn:</dt>
-                <dd><%= job.linkedIn %></dd>
-                <dt>Application Status:</dt>
-                <dd><%= job.applied === true ? "Yes" : "No" %></dd>
-                <dt>Notes:</dt>
-                <dd><%= job.notes %></dd>
-                <dt>Address:</dt>
-                <dd><%= job.address %></dd>
-            </dl>
-          </div><!-- panel-body -->
-        </div><!-- panel-collapse -->
-    </div><!-- panel panel-default -->
-     <% }) %>
-</div><!-- panel-group -->
+
+            </div>
+            <!-- panel-heading -->
+            <div id="collapse<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= index+1 %>">
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>Position:</dt>
+                        <dd>
+                            <%= job.position %>
+                        </dd>
+                        <dt>Date Applied:</dt>
+                        <dd>
+                            <%= job.dateApplied %>
+                        </dd>
+                        <dt>Interview Date:</dt>
+                        <dd>
+                            <%= job.interviewDate %>
+                        </dd>
+                        <dt>Contact:</dt>
+                        <dd>
+                            <%= job.contact %>
+                        </dd>
+                        <dt>Phone Number:</dt>
+                        <dd>
+                            <%= job.phone %>
+                        </dd>
+                        <dt>Email:</dt>
+                        <dd>
+                            <%= job.email %>
+                        </dd>
+                        <dt>LinkedIn:</dt>
+                        <dd>
+                            <%= job.linkedIn %>
+                        </dd>
+                        <dt>Application Status:</dt>
+                        <dd>
+                            <%= job.applied === true ? "Yes" : "No" %>
+                        </dd>
+                        <dt >Notes:</dt>
+                        <dd class="notes<%= index+1 %>">
+                            <%= job.notes %>
+                        </dd>
+                        <dt> Address:</dt>
+                         <dd class="address<%= index+1 %>"><%= job.address %></dd>
+                        <dt visibility: hidden> UserAddress:</dt>
+                         <dd class="Uaddress<%= index+1 %>" visibility: hidden><%= user.address %></dd>
+                    </dl>
+
+                </div>
+                <!-- panel-body -->
+               
+            </div>
+            <!-- panel-collapse -->
+            
+        </div>
+        <!-- panel panel-default -->
+        <% }) %>
+</div>
+
+ <div id="map"></div>
+ 
+</section>
+<script>
+     
+    function initMap() {
+        var endAddress;
+        var startAddress;
+        
+         $( "a" ).click(function() {
+             var $input = $( this );
+             var colS =  $input.attr( "aria-controls" );
+             var indexJ = ".address" + colS.slice(-1);
+            var address = $(indexJ).text();
+            
+            endAddress = address;
+              var indexU = ".Uaddress" + colS.slice(-1);
+            var Uaddress = $(indexU).text();
+            
+            startAddress = Uaddress;
+       
+        
+        
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+       
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7
+            , center: {
+                lat: 41.85
+                , lng: -87.65
+            }
+        });
+        directionsDisplay.setMap(map);
+        calculateAndDisplayRoute(directionsService, directionsDisplay, startAddress, endAddress);
+         });
+        
+      
+    }
+    
+       
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay, startAd, address) {
+        directionsService.route({
+            origin: startAd
+            , destination: address
+            , travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+    
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+
+    
+

@@ -38,6 +38,9 @@ module.exports.routes = {
   'get /login': {
     view: 'login'
   },
+    'get   /publicProfile': 'publicProfileController.showPublic',
+     'get  /publicProfile/show':           'publicProfileController.showUser',
+     'post /publicProfile/show': 'publicProfileController.showUser',
   'post /login': 'UserController.login',
   '/logout': 'UserController.logout',
   'get /signup': 'UserController.new',
@@ -45,6 +48,7 @@ module.exports.routes = {
   'post /user/update': 'UserController.update',
 
   'post /user/resume': 'ResumeController.create',
+   
   'post /user/profilePic': 'ProfilePicController.create',
   'post /user/coverletter': 'CoverLetterController.create',
   'get /user/resume/:id': 'ResumeController.show',

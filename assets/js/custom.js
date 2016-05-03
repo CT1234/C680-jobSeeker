@@ -1,6 +1,8 @@
 $(function() {
+
   $('table').DataTable();
   
+
   var deleteLinks = {
     initialize: function() {
       this.methodLinks = $('a[data-method]');
@@ -30,6 +32,8 @@ $(function() {
         }
       }
 
+        
+        
       $.ajax({
         url: link.attr('href'),
         method: httpMethod,
