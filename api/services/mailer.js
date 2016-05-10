@@ -13,7 +13,7 @@ module.exports = function (jobData) {
         
     interviewDate.setHours(interviewDate.getHours() + 7);
 
-    var smtpTransport = nodemailer.createTransport('smtps://jobseekermailservice%40gmail.com:qwerasdfqwerasdf@smtp.gmail.com');
+    var smtpTransport = nodemailer.createTransport('CENSORED');
 
     function callTransporter(emailData) {
         smtpTransport.sendMail(emailData, function (error, info) {
